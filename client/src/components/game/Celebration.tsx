@@ -21,8 +21,8 @@ export default function Celebration({ show }: CelebrationProps) {
 
   const particles = useMemo(() => {
     return Array.from({ length: PARTICLE_COUNT }).map(() => ({
-      x: Math.random() * window.innerWidth - window.innerWidth / 2,
-      y: -(Math.random() * window.innerHeight),
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
       scale: 0.8 + Math.random() * 2,
       delay: Math.random() * 0.5,
       duration: 1.5 + Math.random() * 0.5,
@@ -34,7 +34,7 @@ export default function Celebration({ show }: CelebrationProps) {
 
   return (
     // <div className="absolute inset-0 pointer-events-none overflow-hidden z-[9999]">
-    <div className="absolute inset-0 pointer-events-none z-9999">
+    <div className="absolute inset-0 pointer-events-none z-99">
       {particles.map((particle, i) => (
         <motion.div
           key={i}
