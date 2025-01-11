@@ -8,21 +8,21 @@ interface NumberGridProps {
     sum: number;
   };
   viewMode: 'grid' | 'grouped';
-  imageType: string;
+  emojiA: string;
+  emojiB: string;
   showAnswer: boolean;
   className?: string;
 }
 
-const imageUrls = {
-  kitten: "https://images.unsplash.com/photo-1723115891740-8adcc7e16436",
-  bunny: "https://images.unsplash.com/photo-1663043501785-05d17c625253",
-  strawberry: "https://images.unsplash.com/photo-1611784601600-ac6f688effdb"
+const emojiMap = {
+  'bear': '🐻',
+  'dog': '🐕',
+  'hamster': '🐹',
+  'sunflower': '🌻'
 };
 
-export default function NumberGrid({ problem, viewMode, imageType, showAnswer, className }: NumberGridProps) {
+export default function NumberGrid({ problem, viewMode, emojiA, emojiB, showAnswer, className }: NumberGridProps) {
   const items = Array.from({ length: showAnswer ? problem.sum : problem.a + problem.b });
-
-  // Create numbered row array 1-10
   const numberedRow = Array.from({ length: 10 }, (_, i) => i + 1);
 
   return (
@@ -52,13 +52,9 @@ export default function NumberGrid({ problem, viewMode, imageType, showAnswer, c
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: i * 0.05 }}
-                  className="aspect-square rounded-lg overflow-hidden"
+                  className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-3xl"
                 >
-                  <img
-                    src={imageUrls[i < problem.a ? imageType : 'strawberry' as keyof typeof imageUrls]}
-                    alt="number item"
-                    className="w-full h-full object-cover"
-                  />
+                  {emojiMap[i < problem.a ? emojiA : emojiB as keyof typeof emojiMap]}
                 </motion.div>
               ))}
             </div>
@@ -72,13 +68,9 @@ export default function NumberGrid({ problem, viewMode, imageType, showAnswer, c
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: i * 0.05 }}
-                    className="aspect-square rounded-lg overflow-hidden"
+                    className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-3xl"
                   >
-                    <img
-                      src={imageUrls[imageType as keyof typeof imageUrls]}
-                      alt="first number item"
-                      className="w-full h-full object-cover"
-                    />
+                    {emojiMap[emojiA as keyof typeof emojiMap]}
                   </motion.div>
                 ))}
               </div>
@@ -90,13 +82,9 @@ export default function NumberGrid({ problem, viewMode, imageType, showAnswer, c
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: i * 0.05 }}
-                    className="aspect-square rounded-lg overflow-hidden"
+                    className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-3xl"
                   >
-                    <img
-                      src={imageUrls['strawberry' as keyof typeof imageUrls]}
-                      alt="second number item"
-                      className="w-full h-full object-cover"
-                    />
+                    {emojiMap[emojiB as keyof typeof emojiMap]}
                   </motion.div>
                 ))}
               </div>

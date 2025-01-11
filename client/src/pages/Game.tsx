@@ -11,7 +11,8 @@ import { RotateCw, Eye, EyeOff } from 'lucide-react';
 export default function Game() {
   const [problem, setProblem] = useState(generateProblem());
   const [showAnswer, setShowAnswer] = useState(false);
-  const [selectedImage, setSelectedImage] = useState('kitten');
+  const [selectedEmojiA, setSelectedEmojiA] = useState('bear');
+  const [selectedEmojiB, setSelectedEmojiB] = useState('sunflower');
   const [progress, setProgress] = useState(0);
   const [viewMode, setViewMode] = useState<'grid' | 'grouped'>('grid');
 
@@ -45,10 +46,12 @@ export default function Game() {
   return (
     <div className="min-h-screen bg-purple-50 p-4 md:p-8">
       <div className="max-w-4xl mx-auto">
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-between items-start mb-6">
           <ImagePicker
-            selected={selectedImage}
-            onSelect={setSelectedImage}
+            selectedA={selectedEmojiA}
+            selectedB={selectedEmojiB}
+            onSelectA={setSelectedEmojiA}
+            onSelectB={setSelectedEmojiB}
           />
           <ProgressTracker progress={progress} />
         </div>
@@ -62,7 +65,8 @@ export default function Game() {
         <NumberGrid
           problem={problem}
           viewMode={viewMode}
-          imageType={selectedImage}
+          emojiA={selectedEmojiA}
+          emojiB={selectedEmojiB}
           showAnswer={showAnswer}
           className="mb-8"
         />
