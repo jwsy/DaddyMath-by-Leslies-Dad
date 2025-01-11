@@ -52,6 +52,26 @@ export default function Game() {
     return () => window.removeEventListener("click", handler);
   }, []);
 
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      switch (e.key.toLowerCase()) {
+        case 'v':
+          toggleView();
+          break;
+        case 'n':
+          handleNewProblem();
+          break;
+        case 'c':
+          if (!showAnswer) handleRevealAnswer();
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [showAnswer]);
+
   // Reset celebration after animation
   useEffect(() => {
     if (showCelebration) {
