@@ -40,13 +40,13 @@ export default function NumberGrid({ problem, viewMode, emojiA, emojiB, showAnsw
           ))}
         </div>
 
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="sync">
           <motion.div
             key={viewMode}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.2 }}
           >
             {viewMode === 'grid' ? (
               <div className="grid grid-cols-10 gap-1 md:gap-2">
