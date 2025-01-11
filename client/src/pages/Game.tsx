@@ -39,7 +39,7 @@ export default function Game() {
     setShowAnswer(true);
     if (isCorrect) {
       setShowCelebration(true);
-      setTotalPuzzles(prev => prev + 1);
+      setTotalPuzzles((prev) => prev + 1);
       setProgress((p) => {
         const newProgress = p + 1;
         if (newProgress === 5) {
@@ -115,11 +115,11 @@ export default function Game() {
         <div className="flex-1 flex flex-col relative">
           <Celebration show={showCelebration} />
           <TrophyCelebration show={showTrophy} totalStars={totalPuzzles} />
-          
+
           <EquationDisplay
             problem={problem}
             showAnswer={showAnswer}
-            className="mb-2"
+            className="equationdisplay mb-2"
           />
 
           <NumberGrid
@@ -128,11 +128,11 @@ export default function Game() {
             emojiA={selectedEmojiA}
             emojiB={selectedEmojiB}
             showAnswer={showAnswer}
-            className="flex-1 min-h-0 mb-2"
+            className="numbergrid min-h-0 mb-2"
           />
 
           {/* Control buttons */}
-          <div className="flex flex-wrap gap-1 justify-center">
+          <div className="controlbuttons flex flex-1 flex-wrap gap-1 justify-center">
             <Button
               size="lg"
               variant="outline"
