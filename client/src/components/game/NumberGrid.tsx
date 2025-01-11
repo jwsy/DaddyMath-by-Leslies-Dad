@@ -56,7 +56,7 @@ export default function NumberGrid({ problem, viewMode, emojiA, emojiB, showAnsw
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: i * 0.05 }}
-                    className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[2rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px]"
+                    className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.75rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
                   >
                     {emojiMap[i < problem.a ? emojiA : emojiB as keyof typeof emojiMap]}
                   </motion.div>
@@ -72,7 +72,7 @@ export default function NumberGrid({ problem, viewMode, emojiA, emojiB, showAnsw
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ delay: i * 0.05 }}
-                      className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[2rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px]"
+                      className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.75rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
                     >
                       {emojiMap[emojiA as keyof typeof emojiMap]}
                     </motion.div>
@@ -86,7 +86,7 @@ export default function NumberGrid({ problem, viewMode, emojiA, emojiB, showAnsw
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ delay: i * 0.05 }}
-                      className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[2rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px]"
+                      className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.75rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
                     >
                       {emojiMap[emojiB as keyof typeof emojiMap]}
                     </motion.div>
@@ -101,7 +101,7 @@ export default function NumberGrid({ problem, viewMode, emojiA, emojiB, showAnsw
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: i * 0.05 }}
-                        className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[2rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px]"
+                        className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.75rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
                       >
                         {emojiMap[emojiA as keyof typeof emojiMap]}
                       </motion.div>
@@ -112,7 +112,7 @@ export default function NumberGrid({ problem, viewMode, emojiA, emojiB, showAnsw
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: i * 0.05 }}
-                        className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[2rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px]"
+                        className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.75rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
                       >
                         {emojiMap[emojiB as keyof typeof emojiMap]}
                       </motion.div>
