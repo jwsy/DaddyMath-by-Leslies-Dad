@@ -4,6 +4,7 @@ import NumberGrid from "@/components/game/NumberGrid";
 import ImagePicker from "@/components/game/ImagePicker";
 import ProgressTracker from "@/components/game/ProgressTracker";
 import Celebration from "@/components/game/Celebration";
+import TrophyCelebration from "@/components/game/TrophyCelebration";
 import { generateProblem } from "@/lib/gameLogic";
 import { playSound } from "@/lib/sounds";
 import { Button } from "@/components/ui/button";
@@ -20,8 +21,10 @@ export default function Game() {
   const [selectedEmojiA, setSelectedEmojiA] = useState("bunny");
   const [selectedEmojiB, setSelectedEmojiB] = useState("strawberry");
   const [progress, setProgress] = useState(0);
+  const [totalPuzzles, setTotalPuzzles] = useState(0);
   const [viewMode, setViewMode] = useState<"grid" | "grouped">("grid");
   const [showCelebration, setShowCelebration] = useState(false);
+  const [showTrophy, setShowTrophy] = useState(false);
 
   const handleNewProblem = () => {
     playSound("click");
@@ -36,7 +39,16 @@ export default function Game() {
     setShowAnswer(true);
     if (isCorrect) {
       setShowCelebration(true);
-      setProgress((p) => Math.min(p + 1, 5));
+      setTotalPuzzles(prev => prev + 1);
+      setProgress((p) => {
+        const newProgress = p + 1;
+        if (newProgress === 5) {
+          setShowTrophy(true);
+          setTimeout(() => setShowTrophy(false), 3000);
+          return 0;
+        }
+        return newProgress;
+      });
     }
   };
 
@@ -96,12 +108,13 @@ export default function Game() {
             onSelectA={setSelectedEmojiA}
             onSelectB={setSelectedEmojiB}
           />
-          <ProgressTracker progress={progress} />
+          <ProgressTracker progress={progress} totalPuzzles={totalPuzzles} />
         </div>
 
         {/* Main game area */}
         <div className="flex-1 flex flex-col relative">
           <Celebration show={showCelebration} />
+          <TrophyCelebration show={showTrophy} totalStars={totalPuzzles} />
           
           <EquationDisplay
             problem={problem}
