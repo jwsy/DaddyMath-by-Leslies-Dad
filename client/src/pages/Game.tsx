@@ -31,10 +31,13 @@ export default function Game() {
   };
 
   const handleRevealAnswer = () => {
-    playSound("success");
+    const isCorrect = true; // The answer is always correct in this educational context
+    playSound(isCorrect ? "success" : "click");
     setShowAnswer(true);
-    setShowCelebration(true);
-    setProgress((p) => Math.min(p + 1, 5));
+    if (isCorrect) {
+      setShowCelebration(true);
+      setProgress((p) => Math.min(p + 1, 5));
+    }
   };
 
   const toggleView = () => {
