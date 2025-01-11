@@ -30,7 +30,7 @@ export default function ImagePicker({ selectedA, selectedB, onSelectA, onSelectB
               variant={selectedA === id ? "default" : "outline"}
               onClick={() => onSelectA(id)}
               className={cn(
-                "text-lg w-10 h-10 p-0",
+                "text-[1.25rem] leading-none w-10 h-10 p-0",
                 selectedA === id && "bg-purple-500 hover:bg-purple-600"
               )}
             >
@@ -49,7 +49,7 @@ export default function ImagePicker({ selectedA, selectedB, onSelectA, onSelectB
               variant={selectedB === id ? "default" : "outline"}
               onClick={() => onSelectB(id)}
               className={cn(
-                "text-lg w-10 h-10 p-0",
+                "text-[1.25rem] leading-none w-10 h-10 p-0",
                 selectedB === id && "bg-purple-500 hover:bg-purple-600"
               )}
             >
