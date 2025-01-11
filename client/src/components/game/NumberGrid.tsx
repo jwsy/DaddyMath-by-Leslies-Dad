@@ -57,7 +57,7 @@ export default function NumberGrid({
               {items.map((_, i) => (
                 <div
                   key={i}
-                  className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
+                  className={`aspect-square rounded-lg shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem] ${i < problem.a ? 'bg-purple-100' : 'bg-pink-100'}`}
                 >
                   {
                     emojiMap[
@@ -80,47 +80,47 @@ export default function NumberGrid({
             <div className="flex flex-col gap-1 md:gap-4">
               {/* First number row */}
               <div className="grid grid-cols-10 gap-1 md:gap-2">
-                {problem.a === 0 ? (
-                  Array.from({ length: 10 }).map((_, i) => (
-                    <div
-                      key={`blank-a${i}`}
-                      className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
-                    >
-                      {" "}
-                    </div>
-                  ))
-                ) : (
-                  Array.from({ length: Math.min(problem.a, 10) }).map((_, i) => (
-                    <div
-                      key={`a${i}`}
-                      className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
-                    >
-                      {emojiMap[emojiA as keyof typeof emojiMap]}
-                    </div>
-                  ))
-                )}
+                {problem.a === 0
+                  ? Array.from({ length: 10 }).map((_, i) => (
+                      <div
+                        key={`blank-a${i}`}
+                        className="aspect-square rounded-lg bg-purple-100 shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
+                      >
+                        {" "}
+                      </div>
+                    ))
+                  : Array.from({ length: Math.min(problem.a, 10) }).map(
+                      (_, i) => (
+                        <div
+                          key={`a${i}`}
+                          className="aspect-square rounded-lg bg-purple-100 shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
+                        >
+                          {emojiMap[emojiA as keyof typeof emojiMap]}
+                        </div>
+                      ),
+                    )}
               </div>
               {/* Second number row */}
               <div className="grid grid-cols-10 gap-1 md:gap-2">
-                {problem.b === 0 ? (
-                  Array.from({ length: 10 }).map((_, i) => (
-                    <div
-                      key={`blank-b${i}`}
-                      className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
-                    >
-                      {" "}
-                    </div>
-                  ))
-                ) : (
-                  Array.from({ length: Math.min(problem.b, 10) }).map((_, i) => (
-                    <div
-                      key={`b${i}`}
-                      className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
-                    >
-                      {emojiMap[emojiB as keyof typeof emojiMap]}
-                    </div>
-                  ))
-                )}
+                {problem.b === 0
+                  ? Array.from({ length: 10 }).map((_, i) => (
+                      <div
+                        key={`blank-b${i}`}
+                        className="aspect-square rounded-lg bg-pink-100 shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
+                      >
+                        {" "}
+                      </div>
+                    ))
+                  : Array.from({ length: Math.min(problem.b, 10) }).map(
+                      (_, i) => (
+                        <div
+                          key={`b${i}`}
+                          className="aspect-square rounded-lg bg-pink-100 shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
+                        >
+                          {emojiMap[emojiB as keyof typeof emojiMap]}
+                        </div>
+                      ),
+                    )}
               </div>
               {/* Overflow row if needed */}
               {(problem.a > 10 || problem.b > 10) && (
@@ -129,7 +129,7 @@ export default function NumberGrid({
                     (_, i) => (
                       <div
                         key={`overflow_a${i}`}
-                        className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
+                        className="aspect-square rounded-lg bg-purple-100 shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
                       >
                         {emojiMap[emojiA as keyof typeof emojiMap]}
                       </div>
@@ -139,7 +139,7 @@ export default function NumberGrid({
                     (_, i) => (
                       <div
                         key={`overflow_b${i}`}
-                        className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
+                        className="aspect-square rounded-lg bg-pink-100 shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
                       >
                         {emojiMap[emojiB as keyof typeof emojiMap]}
                       </div>
