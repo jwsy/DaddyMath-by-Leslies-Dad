@@ -1,4 +1,3 @@
-import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 interface NumberGridProps {
@@ -40,89 +39,66 @@ export default function NumberGrid({ problem, viewMode, emojiA, emojiB, showAnsw
           ))}
         </div>
 
-        <AnimatePresence mode="sync">
-          <motion.div
-            key={viewMode}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            {viewMode === 'grid' ? (
+        <div>
+          {viewMode === 'grid' ? (
+            <div className="grid grid-cols-10 gap-1 md:gap-2">
+              {items.map((_, i) => (
+                <div
+                  key={i}
+                  className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.75rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
+                >
+                  {emojiMap[i < problem.a ? emojiA : emojiB as keyof typeof emojiMap]}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col gap-1 md:gap-4">
+              {/* First number row */}
               <div className="grid grid-cols-10 gap-1 md:gap-2">
-                {items.map((_, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: i * 0.05 }}
+                {Array.from({ length: Math.min(problem.a, 10) }).map((_, i) => (
+                  <div
+                    key={`a${i}`}
                     className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.75rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
                   >
-                    {emojiMap[i < problem.a ? emojiA : emojiB as keyof typeof emojiMap]}
-                  </motion.div>
+                    {emojiMap[emojiA as keyof typeof emojiMap]}
+                  </div>
                 ))}
               </div>
-            ) : (
-              <div className="flex flex-col gap-1 md:gap-4">
-                {/* First number row */}
+              {/* Second number row */}
+              <div className="grid grid-cols-10 gap-1 md:gap-2">
+                {Array.from({ length: Math.min(problem.b, 10) }).map((_, i) => (
+                  <div
+                    key={`b${i}`}
+                    className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.75rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
+                  >
+                    {emojiMap[emojiB as keyof typeof emojiMap]}
+                  </div>
+                ))}
+              </div>
+              {/* Overflow row if needed */}
+              {(problem.a > 10 || problem.b > 10) && (
                 <div className="grid grid-cols-10 gap-1 md:gap-2">
-                  {Array.from({ length: Math.min(problem.a, 10) }).map((_, i) => (
-                    <motion.div
-                      key={`a${i}`}
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: i * 0.05 }}
+                  {Array.from({ length: Math.max(problem.a - 10, 0) }).map((_, i) => (
+                    <div
+                      key={`overflow_a${i}`}
                       className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.75rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
                     >
                       {emojiMap[emojiA as keyof typeof emojiMap]}
-                    </motion.div>
+                    </div>
                   ))}
-                </div>
-                {/* Second number row */}
-                <div className="grid grid-cols-10 gap-1 md:gap-2">
-                  {Array.from({ length: Math.min(problem.b, 10) }).map((_, i) => (
-                    <motion.div
-                      key={`b${i}`}
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: i * 0.05 }}
+                  {Array.from({ length: Math.max(problem.b - 10, 0) }).map((_, i) => (
+                    <div
+                      key={`overflow_b${i}`}
                       className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.75rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
                     >
                       {emojiMap[emojiB as keyof typeof emojiMap]}
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
-                {/* Overflow row if needed */}
-                {(problem.a > 10 || problem.b > 10) && (
-                  <div className="grid grid-cols-10 gap-1 md:gap-2">
-                    {Array.from({ length: Math.max(problem.a - 10, 0) }).map((_, i) => (
-                      <motion.div
-                        key={`overflow_a${i}`}
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: i * 0.05 }}
-                        className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.75rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
-                      >
-                        {emojiMap[emojiA as keyof typeof emojiMap]}
-                      </motion.div>
-                    ))}
-                    {Array.from({ length: Math.max(problem.b - 10, 0) }).map((_, i) => (
-                      <motion.div
-                        key={`overflow_b${i}`}
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: i * 0.05 }}
-                        className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.75rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
-                      >
-                        {emojiMap[emojiB as keyof typeof emojiMap]}
-                      </motion.div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
-          </motion.div>
-        </AnimatePresence>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
