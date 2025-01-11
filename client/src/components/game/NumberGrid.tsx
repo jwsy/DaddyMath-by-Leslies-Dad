@@ -45,7 +45,7 @@ export default function NumberGrid({ problem, viewMode, emojiA, emojiB, showAnsw
               {items.map((_, i) => (
                 <div
                   key={i}
-                  className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.75rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
+                  className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
                 >
                   {emojiMap[i < problem.a ? emojiA : emojiB as keyof typeof emojiMap]}
                 </div>
@@ -58,7 +58,7 @@ export default function NumberGrid({ problem, viewMode, emojiA, emojiB, showAnsw
                 {Array.from({ length: Math.min(problem.a, 10) }).map((_, i) => (
                   <div
                     key={`a${i}`}
-                    className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.75rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
+                    className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
                   >
                     {emojiMap[emojiA as keyof typeof emojiMap]}
                   </div>
@@ -69,7 +69,7 @@ export default function NumberGrid({ problem, viewMode, emojiA, emojiB, showAnsw
                 {Array.from({ length: Math.min(problem.b, 10) }).map((_, i) => (
                   <div
                     key={`b${i}`}
-                    className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.75rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
+                    className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
                   >
                     {emojiMap[emojiB as keyof typeof emojiMap]}
                   </div>
@@ -81,7 +81,7 @@ export default function NumberGrid({ problem, viewMode, emojiA, emojiB, showAnsw
                   {Array.from({ length: Math.max(problem.a - 10, 0) }).map((_, i) => (
                     <div
                       key={`overflow_a${i}`}
-                      className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.75rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
+                      className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
                     >
                       {emojiMap[emojiA as keyof typeof emojiMap]}
                     </div>
@@ -89,7 +89,7 @@ export default function NumberGrid({ problem, viewMode, emojiA, emojiB, showAnsw
                   {Array.from({ length: Math.max(problem.b - 10, 0) }).map((_, i) => (
                     <div
                       key={`overflow_b${i}`}
-                      className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.75rem] leading-none h-[48px] w-[48px] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
+                      className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem]"
                     >
                       {emojiMap[emojiB as keyof typeof emojiMap]}
                     </div>
