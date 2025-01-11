@@ -21,9 +21,21 @@ const imageUrls = {
 
 export default function NumberGrid({ problem, viewMode, imageType, showAnswer, className }: NumberGridProps) {
   const items = Array.from({ length: showAnswer ? problem.sum : problem.a + problem.b });
-  
+
+  // Create numbered row array 1-10
+  const numberedRow = Array.from({ length: 10 }, (_, i) => i + 1);
+
   return (
     <div className={cn("relative", className)}>
+      {/* Numbered row */}
+      <div className="grid grid-cols-10 gap-2 mb-2">
+        {numberedRow.map((num) => (
+          <div key={`num-${num}`} className="aspect-square flex items-center justify-center text-lg font-bold text-purple-600">
+            {num}
+          </div>
+        ))}
+      </div>
+
       <AnimatePresence mode="wait">
         <motion.div
           key={viewMode}
@@ -43,7 +55,7 @@ export default function NumberGrid({ problem, viewMode, imageType, showAnswer, c
                   className="aspect-square rounded-lg overflow-hidden"
                 >
                   <img
-                    src={imageUrls[imageType as keyof typeof imageUrls]}
+                    src={imageUrls[i < problem.a ? imageType : 'strawberry' as keyof typeof imageUrls]}
                     alt="number item"
                     className="w-full h-full object-cover"
                   />
@@ -51,8 +63,9 @@ export default function NumberGrid({ problem, viewMode, imageType, showAnswer, c
               ))}
             </div>
           ) : (
-            <div className="flex gap-8 justify-center">
-              <div className="grid grid-cols-5 gap-2">
+            <div className="flex flex-col gap-4">
+              {/* First number row */}
+              <div className="grid grid-cols-10 gap-2">
                 {Array.from({ length: problem.a }).map((_, i) => (
                   <motion.div
                     key={`a${i}`}
@@ -63,13 +76,14 @@ export default function NumberGrid({ problem, viewMode, imageType, showAnswer, c
                   >
                     <img
                       src={imageUrls[imageType as keyof typeof imageUrls]}
-                      alt="number item"
+                      alt="first number item"
                       className="w-full h-full object-cover"
                     />
                   </motion.div>
                 ))}
               </div>
-              <div className="grid grid-cols-5 gap-2">
+              {/* Second number row */}
+              <div className="grid grid-cols-10 gap-2">
                 {Array.from({ length: problem.b }).map((_, i) => (
                   <motion.div
                     key={`b${i}`}
@@ -79,8 +93,8 @@ export default function NumberGrid({ problem, viewMode, imageType, showAnswer, c
                     className="aspect-square rounded-lg overflow-hidden"
                   >
                     <img
-                      src={imageUrls[imageType as keyof typeof imageUrls]}
-                      alt="number item"
+                      src={imageUrls['strawberry' as keyof typeof imageUrls]}
+                      alt="second number item"
                       className="w-full h-full object-cover"
                     />
                   </motion.div>
