@@ -21,11 +21,11 @@ export default function Celebration({ show }: CelebrationProps) {
 
   const particles = useMemo(() => {
     return Array.from({ length: PARTICLE_COUNT }).map(() => ({
-      x: Math.random() * 400 - 200,
-      y: -(Math.random() * 200 + 100),
+      x: Math.random() * window.innerWidth - window.innerWidth / 2,
+      y: -(Math.random() * window.innerHeight),
       scale: 0.8 + Math.random() * 2,
-      delay: Math.random() * 0.3,
-      duration: 1 + Math.random() * 0.5,
+      delay: Math.random() * 0.5,
+      duration: 1.5 + Math.random() * 0.5,
       rotation: Math.random() * 720,
       color: colors[Math.floor(Math.random() * colors.length)],
       shape: shapes[Math.floor(Math.random() * shapes.length)],
