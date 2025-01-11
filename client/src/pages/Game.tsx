@@ -44,9 +44,10 @@ export default function Game() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-purple-50 p-4 md:p-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex justify-between items-start mb-6">
+    <div className="min-h-screen bg-purple-50 p-3 md:p-8 flex flex-col">
+      <div className="max-w-4xl mx-auto w-full flex-1 flex flex-col">
+        {/* Top section with emoji picker and progress */}
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-4 md:mb-6">
           <ImagePicker
             selectedA={selectedEmojiA}
             selectedB={selectedEmojiB}
@@ -56,47 +57,54 @@ export default function Game() {
           <ProgressTracker progress={progress} />
         </div>
 
-        <EquationDisplay
-          problem={problem}
-          showAnswer={showAnswer}
-          className="mb-8"
-        />
+        {/* Main game area */}
+        <div className="flex-1 flex flex-col">
+          <EquationDisplay
+            problem={problem}
+            showAnswer={showAnswer}
+            className="mb-4 md:mb-8"
+          />
 
-        <NumberGrid
-          problem={problem}
-          viewMode={viewMode}
-          emojiA={selectedEmojiA}
-          emojiB={selectedEmojiB}
-          showAnswer={showAnswer}
-          className="mb-8"
-        />
+          <NumberGrid
+            problem={problem}
+            viewMode={viewMode}
+            emojiA={selectedEmojiA}
+            emojiB={selectedEmojiB}
+            showAnswer={showAnswer}
+            className="mb-4 md:mb-8"
+          />
 
-        <div className="flex gap-4 justify-center">
-          <Button
-            size="lg"
-            variant="outline"
-            onClick={toggleView}
-          >
-            {viewMode === 'grid' ? <Eye className="mr-2" /> : <EyeOff className="mr-2" />}
-            {viewMode === 'grid' ? 'Group View' : 'Grid View'}
-          </Button>
+          {/* Control buttons */}
+          <div className="flex flex-wrap gap-2 justify-center mt-auto">
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={toggleView}
+              className="flex-1 sm:flex-none min-w-[120px]"
+            >
+              {viewMode === 'grid' ? <Eye className="mr-2 h-5 w-5" /> : <EyeOff className="mr-2 h-5 w-5" />}
+              {viewMode === 'grid' ? 'Group View' : 'Grid View'}
+            </Button>
 
-          <Button
-            size="lg"
-            variant="outline"
-            onClick={handleNewProblem}
-          >
-            <RotateCw className="mr-2" />
-            New Problem
-          </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={handleNewProblem}
+              className="flex-1 sm:flex-none min-w-[120px]"
+            >
+              <RotateCw className="mr-2 h-5 w-5" />
+              New Problem
+            </Button>
 
-          <Button
-            size="lg"
-            onClick={handleRevealAnswer}
-            disabled={showAnswer}
-          >
-            Show Answer
-          </Button>
+            <Button
+              size="lg"
+              onClick={handleRevealAnswer}
+              disabled={showAnswer}
+              className="flex-1 sm:flex-none min-w-[120px]"
+            >
+              Show Answer
+            </Button>
+          </div>
         </div>
       </div>
     </div>

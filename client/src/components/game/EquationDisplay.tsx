@@ -13,11 +13,11 @@ interface EquationDisplayProps {
 
 export default function EquationDisplay({ problem, showAnswer, className }: EquationDisplayProps) {
   return (
-    <div className={cn("text-center text-4xl md:text-6xl font-bold", className)}>
+    <div className={cn("text-center text-3xl sm:text-4xl md:text-6xl font-bold", className)}>
       <motion.div
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
-        className="flex items-center justify-center gap-4 md:gap-8"
+        className="flex items-center justify-center gap-2 sm:gap-4 md:gap-8"
       >
         <span className="text-purple-600">{problem.a}</span>
         <span className="text-pink-500">+</span>
