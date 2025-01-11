@@ -59,20 +59,20 @@ export default function Game() {
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       switch (e.key.toLowerCase()) {
-        case 'v':
+        case "v":
           toggleView();
           break;
-        case 'n':
+        case "n":
           handleNewProblem();
           break;
-        case 'c':
+        case "c":
           if (!showAnswer) handleRevealAnswer();
           break;
       }
     };
 
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
   }, [showAnswer]);
 
   // Reset celebration after animation
@@ -101,6 +101,8 @@ export default function Game() {
 
         {/* Main game area */}
         <div className="flex-1 flex flex-col relative">
+          <Celebration show={showCelebration} />
+          
           <EquationDisplay
             problem={problem}
             showAnswer={showAnswer}
@@ -152,8 +154,6 @@ export default function Game() {
               Check
             </Button>
           </div>
-
-          <Celebration show={showCelebration} />
         </div>
       </div>
     </div>
