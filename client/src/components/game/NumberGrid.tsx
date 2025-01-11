@@ -16,9 +16,12 @@ interface NumberGridProps {
 
 const emojiMap = {
   'bear': '🐻',
-  'dog': '🐕',
+  'puppy': '🐶',
+  'bunny': '🐰',
+  'kitten': '😺',
   'hamster': '🐹',
-  'sunflower': '🌻'
+  'sunflower': '🌻',
+  'strawberry': '🍓'
 };
 
 export default function NumberGrid({ problem, viewMode, emojiA, emojiB, showAnswer, className }: NumberGridProps) {
@@ -63,7 +66,7 @@ export default function NumberGrid({ problem, viewMode, emojiA, emojiB, showAnsw
               <div className="flex flex-col gap-1 md:gap-4">
                 {/* First number row */}
                 <div className="grid grid-cols-10 gap-1 md:gap-2">
-                  {Array.from({ length: problem.a }).map((_, i) => (
+                  {Array.from({ length: Math.min(problem.a, 10) }).map((_, i) => (
                     <motion.div
                       key={`a${i}`}
                       initial={{ scale: 0 }}
@@ -77,7 +80,7 @@ export default function NumberGrid({ problem, viewMode, emojiA, emojiB, showAnsw
                 </div>
                 {/* Second number row */}
                 <div className="grid grid-cols-10 gap-1 md:gap-2">
-                  {Array.from({ length: problem.b }).map((_, i) => (
+                  {Array.from({ length: Math.min(problem.b, 10) }).map((_, i) => (
                     <motion.div
                       key={`b${i}`}
                       initial={{ scale: 0 }}
@@ -89,6 +92,33 @@ export default function NumberGrid({ problem, viewMode, emojiA, emojiB, showAnsw
                     </motion.div>
                   ))}
                 </div>
+                {/* Overflow row if needed */}
+                {(problem.a > 10 || problem.b > 10) && (
+                  <div className="grid grid-cols-10 gap-1 md:gap-2">
+                    {Array.from({ length: Math.max(problem.a - 10, 0) }).map((_, i) => (
+                      <motion.div
+                        key={`overflow_a${i}`}
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: i * 0.05 }}
+                        className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-xl md:text-3xl"
+                      >
+                        {emojiMap[emojiA as keyof typeof emojiMap]}
+                      </motion.div>
+                    ))}
+                    {Array.from({ length: Math.max(problem.b - 10, 0) }).map((_, i) => (
+                      <motion.div
+                        key={`overflow_b${i}`}
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: i * 0.05 }}
+                        className="aspect-square rounded-lg bg-white shadow-sm flex items-center justify-center text-xl md:text-3xl"
+                      >
+                        {emojiMap[emojiB as keyof typeof emojiMap]}
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
           </motion.div>

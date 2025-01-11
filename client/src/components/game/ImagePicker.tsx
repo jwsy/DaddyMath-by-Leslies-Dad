@@ -10,9 +10,12 @@ interface ImagePickerProps {
 
 const emojis = [
   { id: 'bear', label: '🐻' },
-  { id: 'dog', label: '🐕' },
+  { id: 'puppy', label: '🐶' },
+  { id: 'bunny', label: '🐰' },
+  { id: 'kitten', label: '😺' },
   { id: 'hamster', label: '🐹' },
-  { id: 'sunflower', label: '🌻' }
+  { id: 'sunflower', label: '🌻' },
+  { id: 'strawberry', label: '🍓' }
 ];
 
 export default function ImagePicker({ selectedA, selectedB, onSelectA, onSelectB }: ImagePickerProps) {
@@ -20,7 +23,7 @@ export default function ImagePicker({ selectedA, selectedB, onSelectA, onSelectB
     <div className="flex flex-col gap-2">
       <div className="flex items-center gap-2">
         <span className="text-base font-bold text-purple-600 w-4">A:</span>
-        <div className="flex gap-1">
+        <div className="flex gap-1 flex-wrap">
           {emojis.map(({ id, label }) => (
             <Button
               key={`a-${id}`}
@@ -39,7 +42,7 @@ export default function ImagePicker({ selectedA, selectedB, onSelectA, onSelectB
 
       <div className="flex items-center gap-2">
         <span className="text-base font-bold text-purple-600 w-4">B:</span>
-        <div className="flex gap-1">
+        <div className="flex gap-1 flex-wrap">
           {emojis.map(({ id, label }) => (
             <Button
               key={`b-${id}`}

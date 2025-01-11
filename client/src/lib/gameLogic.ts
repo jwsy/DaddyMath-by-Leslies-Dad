@@ -1,6 +1,6 @@
 export function generateProblem() {
-  const a = Math.floor(Math.random() * 6) + 1; // 1 to 6
-  const b = Math.floor(Math.random() * (10 - a)) + 1; // Ensure sum <= 10
+  const a = Math.floor(Math.random() * 11); // 0 to 10
+  const b = Math.floor(Math.random() * 11); // 0 to 10
   return {
     a,
     b,
