@@ -27,7 +27,7 @@ export default function Celebration({ show }: CelebrationProps) {
   }, []);
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden z-50">
+    <div className="absolute inset-0 pointer-events-none overflow-hidden z-[9999]">
       {particles.map((particle, i) => (
         <motion.div
           key={i}
