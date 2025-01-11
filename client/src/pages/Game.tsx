@@ -17,8 +17,8 @@ import {
 export default function Game() {
   const [problem, setProblem] = useState(generateProblem());
   const [showAnswer, setShowAnswer] = useState(false);
-  const [selectedEmojiA, setSelectedEmojiA] = useState("bear");
-  const [selectedEmojiB, setSelectedEmojiB] = useState("sunflower");
+  const [selectedEmojiA, setSelectedEmojiA] = useState("bunny");
+  const [selectedEmojiB, setSelectedEmojiB] = useState("strawberry");
   const [progress, setProgress] = useState(0);
   const [viewMode, setViewMode] = useState<"grid" | "grouped">("grid");
   const [showCelebration, setShowCelebration] = useState(false);
