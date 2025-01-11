@@ -1,10 +1,11 @@
+
 import { motion } from 'framer-motion';
 
 interface CelebrationProps {
   show: boolean;
 }
 
-const particles = Array.from({ length: 50 }); // Increased number of particles
+const particles = Array.from({ length: 100 }); // More particles
 const colors = ['#FF69B4', '#87CEEB', '#98FB98', '#DDA0DD', '#F0E68C', '#FF6B6B'];
 const shapes = ['●', '■', '★', '♦', '✶'];
 
@@ -14,12 +15,12 @@ export default function Celebration({ show }: CelebrationProps) {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
       {particles.map((_, i) => {
-        const randomX = Math.random() * 200 - 100; // -100 to 100
-        const randomY = -(Math.random() * 50 + 50); // -100 to -50
-        const randomScale = 0.5 + Math.random() * 1.5;
-        const randomDelay = Math.random() * 0.2;
-        const randomDuration = 0.6 + Math.random() * 0.4;
-        const randomRotation = Math.random() * 360;
+        const randomX = Math.random() * 400 - 200; // Wider spread
+        const randomY = -(Math.random() * 200 + 100); // Higher upward movement
+        const randomScale = 0.8 + Math.random() * 2; // Larger particles
+        const randomDelay = Math.random() * 0.3;
+        const randomDuration = 1 + Math.random() * 0.5; // Longer duration
+        const randomRotation = Math.random() * 720; // More rotation
         const color = colors[Math.floor(Math.random() * colors.length)];
         const shape = shapes[Math.floor(Math.random() * shapes.length)];
 
@@ -45,7 +46,7 @@ export default function Celebration({ show }: CelebrationProps) {
               delay: randomDelay,
               ease: "easeOut"
             }}
-            className="absolute text-2xl"
+            className="absolute text-3xl"
             style={{ color }}
           >
             {shape}
