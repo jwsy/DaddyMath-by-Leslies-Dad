@@ -57,7 +57,7 @@ export default function NumberGrid({
               {items.map((_, i) => (
                 <div
                   key={i}
-                  className={`aspect-square rounded-lg shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem] ${i < problem.a ? 'bg-purple-100' : 'bg-pink-100'}`}
+                  className={`aspect-square rounded-lg shadow-sm flex items-center justify-center text-[1.25rem] leading-none h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] sm:text-[1.75rem] md:h-[64px] md:w-[64px] md:text-[2.25rem] ${i < problem.a ? "bg-purple-100" : "bg-pink-100"}`}
                 >
                   {
                     emojiMap[
@@ -77,7 +77,7 @@ export default function NumberGrid({
                 ))}
             </div>
           ) : (
-            <div className="flex flex-col gap-1 md:gap-4">
+            <div className="flex flex-col gap-1 md:gap-2">
               {/* First number row */}
               <div className="grid grid-cols-10 gap-1 md:gap-2">
                 {problem.a === 0
@@ -124,7 +124,7 @@ export default function NumberGrid({
               </div>
               {/* Overflow row if needed */}
               {(problem.a > 10 || problem.b > 10) && (
-                <div className="grid grid-cols-10 gap-1 md:gap-2">
+                <div className="grid grid-cols-10 gap-1">
                   {Array.from({ length: Math.max(problem.a - 10, 0) }).map(
                     (_, i) => (
                       <div
