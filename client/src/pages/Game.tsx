@@ -1,50 +1,55 @@
-import { useState, useEffect } from 'react';
-import EquationDisplay from '@/components/game/EquationDisplay';
-import NumberGrid from '@/components/game/NumberGrid';
-import ImagePicker from '@/components/game/ImagePicker';
-import ProgressTracker from '@/components/game/ProgressTracker';
-import Celebration from '@/components/game/Celebration';
-import { generateProblem } from '@/lib/gameLogic';
-import { playSound } from '@/lib/sounds';
-import { Button } from '@/components/ui/button';
-import { RotateCw, Eye, EyeOff } from 'lucide-react';
+import { useState, useEffect } from "react";
+import EquationDisplay from "@/components/game/EquationDisplay";
+import NumberGrid from "@/components/game/NumberGrid";
+import ImagePicker from "@/components/game/ImagePicker";
+import ProgressTracker from "@/components/game/ProgressTracker";
+import Celebration from "@/components/game/Celebration";
+import { generateProblem } from "@/lib/gameLogic";
+import { playSound } from "@/lib/sounds";
+import { Button } from "@/components/ui/button";
+import {
+  ArrowUpDown,
+  CircleCheckBig,
+  CornerDownRight,
+  RotateCw,
+} from "lucide-react";
 
 export default function Game() {
   const [problem, setProblem] = useState(generateProblem());
   const [showAnswer, setShowAnswer] = useState(false);
-  const [selectedEmojiA, setSelectedEmojiA] = useState('bear');
-  const [selectedEmojiB, setSelectedEmojiB] = useState('sunflower');
+  const [selectedEmojiA, setSelectedEmojiA] = useState("bear");
+  const [selectedEmojiB, setSelectedEmojiB] = useState("sunflower");
   const [progress, setProgress] = useState(0);
-  const [viewMode, setViewMode] = useState<'grid' | 'grouped'>('grid');
+  const [viewMode, setViewMode] = useState<"grid" | "grouped">("grid");
   const [showCelebration, setShowCelebration] = useState(false);
 
   const handleNewProblem = () => {
-    playSound('click');
+    playSound("click");
     setShowAnswer(false);
     setShowCelebration(false);
     setProblem(generateProblem());
   };
 
   const handleRevealAnswer = () => {
-    playSound('success');
+    playSound("success");
     setShowAnswer(true);
     setShowCelebration(true);
     setProgress((p) => Math.min(p + 1, 5));
   };
 
   const toggleView = () => {
-    playSound('click');
-    setViewMode(v => v === 'grid' ? 'grouped' : 'grid');
+    playSound("click");
+    setViewMode((v) => (v === "grid" ? "grouped" : "grid"));
   };
 
   useEffect(() => {
     // Initialize audio context on first user interaction
     const handler = () => {
-      playSound('click');
-      window.removeEventListener('click', handler);
+      playSound("click");
+      window.removeEventListener("click", handler);
     };
-    window.addEventListener('click', handler);
-    return () => window.removeEventListener('click', handler);
+    window.addEventListener("click", handler);
+    return () => window.removeEventListener("click", handler);
   }, []);
 
   // Reset celebration after animation
@@ -96,8 +101,12 @@ export default function Game() {
               onClick={toggleView}
               className="flex-1 sm:flex-none min-w-[120px]"
             >
-              {viewMode === 'grid' ? <Eye className="mr-2 h-5 w-5" /> : <EyeOff className="mr-2 h-5 w-5" />}
-              {viewMode === 'grid' ? 'Group View' : 'Grid View'}
+              {viewMode === "grid" ? (
+                <CornerDownRight className="mr-2 h-5 w-5" />
+              ) : (
+                <ArrowUpDown className="mr-2 h-5 w-5" />
+              )}
+              {viewMode === "grid" ? "Together" : "Two"}
             </Button>
 
             <Button
@@ -107,7 +116,7 @@ export default function Game() {
               className="flex-1 sm:flex-none min-w-[120px]"
             >
               <RotateCw className="mr-2 h-5 w-5" />
-              New Problem
+              New
             </Button>
 
             <Button
@@ -116,7 +125,8 @@ export default function Game() {
               disabled={showAnswer}
               className="flex-1 sm:flex-none min-w-[120px]"
             >
-              Show Answer
+              <CircleCheckBig className="mr-2 h-5 w-5" />
+              Check
             </Button>
           </div>
 
