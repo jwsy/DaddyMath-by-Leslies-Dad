@@ -3,6 +3,7 @@ import EquationDisplay from '@/components/game/EquationDisplay';
 import NumberGrid from '@/components/game/NumberGrid';
 import ImagePicker from '@/components/game/ImagePicker';
 import ProgressTracker from '@/components/game/ProgressTracker';
+import Celebration from '@/components/game/Celebration';
 import { generateProblem } from '@/lib/gameLogic';
 import { playSound } from '@/lib/sounds';
 import { Button } from '@/components/ui/button';
@@ -15,16 +16,19 @@ export default function Game() {
   const [selectedEmojiB, setSelectedEmojiB] = useState('sunflower');
   const [progress, setProgress] = useState(0);
   const [viewMode, setViewMode] = useState<'grid' | 'grouped'>('grid');
+  const [showCelebration, setShowCelebration] = useState(false);
 
   const handleNewProblem = () => {
     playSound('click');
     setShowAnswer(false);
+    setShowCelebration(false);
     setProblem(generateProblem());
   };
 
   const handleRevealAnswer = () => {
     playSound('success');
     setShowAnswer(true);
+    setShowCelebration(true);
     setProgress((p) => Math.min(p + 1, 5));
   };
 
@@ -43,6 +47,16 @@ export default function Game() {
     return () => window.removeEventListener('click', handler);
   }, []);
 
+  // Reset celebration after animation
+  useEffect(() => {
+    if (showCelebration) {
+      const timer = setTimeout(() => {
+        setShowCelebration(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [showCelebration]);
+
   return (
     <div className="min-h-screen bg-purple-50 p-3 md:p-8 flex flex-col">
       <div className="max-w-4xl mx-auto w-full flex-1 flex flex-col">
@@ -58,7 +72,7 @@ export default function Game() {
         </div>
 
         {/* Main game area */}
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col relative">
           <EquationDisplay
             problem={problem}
             showAnswer={showAnswer}
@@ -73,6 +87,8 @@ export default function Game() {
             showAnswer={showAnswer}
             className="mb-4 md:mb-8"
           />
+
+          <Celebration show={showCelebration} />
 
           {/* Control buttons */}
           <div className="flex flex-wrap gap-2 justify-center mt-auto">
