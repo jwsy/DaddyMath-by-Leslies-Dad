@@ -76,7 +76,7 @@ export default function Game() {
           <EquationDisplay
             problem={problem}
             showAnswer={showAnswer}
-            className="mb-4 md:mb-8"
+            className="mb-2"
           />
 
           <NumberGrid
@@ -85,13 +85,11 @@ export default function Game() {
             emojiA={selectedEmojiA}
             emojiB={selectedEmojiB}
             showAnswer={showAnswer}
-            className="mb-4 md:mb-8"
+            className="flex-1 min-h-0 mb-2"
           />
 
-          <Celebration show={showCelebration} />
-
           {/* Control buttons */}
-          <div className="flex flex-wrap gap-2 justify-center mt-auto">
+          <div className="flex flex-wrap gap-1 justify-center">
             <Button
               size="lg"
               variant="outline"
@@ -121,6 +119,8 @@ export default function Game() {
               Show Answer
             </Button>
           </div>
+
+          <Celebration show={showCelebration} />
         </div>
       </div>
     </div>
