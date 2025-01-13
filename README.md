@@ -1,11 +1,15 @@
 
 # Daddy Math
 
-A fun and interactive web application for practicing addition arithmetic with visual aids.
+React app to get lots of addition arithmetic reps requested by a six-year-old and created with Replit Agent and Replit Assistant.
+
+Deployed to <https://daddy-math.replit.app/>
+
+![image](docs/screenshot.png)
 
 ## Features
 
-- Interactive number grid visualization
+- Interactive number grid visualizations in two-row or wrap views
 - Multiple emoji options for visual representation
 - Progress tracking with stars
 - Trophy celebrations for achievements
