@@ -124,7 +124,7 @@ export default function NumberGrid({
               </div>
               {/* Overflow row if needed */}
               {(problem.a > 10 || problem.b > 10) && (
-                <div className="grid grid-cols-10 gap-1">
+                <div className="grid grid-cols-10 gap-1 md:gap-2">
                   {Array.from({ length: Math.max(problem.a - 10, 0) }).map(
                     (_, i) => (
                       <div
