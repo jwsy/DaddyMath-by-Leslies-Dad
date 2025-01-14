@@ -42,7 +42,7 @@ export default function Game() {
       setTotalPuzzles((prev) => prev + 1);
       setProgress((p) => {
         const newProgress = p + 1;
-        if (newProgress === 5) {
+        if (newProgress === 10) {
           setShowTrophy(true);
           setTimeout(() => setShowTrophy(false), 3000);
           return 0;

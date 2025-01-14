@@ -11,7 +11,7 @@ export default function ProgressTracker({ progress, totalPuzzles }: ProgressTrac
   return (
     <div className="flex items-center gap-4">
       <div className="flex gap-1">
-        {Array.from({ length: 5 }).map((_, i) => (
+        {Array.from({ length: 10 }).map((_, i) => (
           <motion.div
             key={i}
             initial={{ scale: 0 }}
