@@ -9,10 +9,11 @@ interface ImagePickerProps {
 }
 
 const emojis = [
-  { id: "bear", label: "🐻" },
-  { id: "puppy", label: "🐶" },
   { id: "bunny", label: "🐰" },
-  { id: "kitten", label: "😺" },
+  { id: "bear", label: "🐻" },
+  { id: "otter", label: "🦦" },
+  { id: "puppy", label: "🐶" },
+  { id: "kitten", label: "🐈" },
   { id: "hamster", label: "🐹" },
   { id: "sunflower", label: "🌻" },
   { id: "strawberry", label: "🍓" },
