@@ -53,7 +53,7 @@ export default function NumberGrid({
 
         <div>
           {viewMode === "grid" ? (
-            <div className="grid grid-cols-10 gap-1 md:gap-4">
+            <div className="grid grid-cols-10 gap-1 md:gap-2">
               {items.map((_, i) => (
                 <div
                   key={i}
