@@ -22,7 +22,7 @@ export default function Game() {
   const [selectedEmojiB, setSelectedEmojiB] = useState("strawberry");
   const [progress, setProgress] = useState(0);
   const [totalPuzzles, setTotalPuzzles] = useState(0);
-  const [viewMode, setViewMode] = useState<"grid" | "grouped">("grid");
+  const [viewMode, setViewMode] = useState<"grid" | "grouped">("grouped");
   const [showCelebration, setShowCelebration] = useState(false);
   const [showTrophy, setShowTrophy] = useState(false);
 
@@ -151,7 +151,7 @@ export default function Game() {
               size="lg"
               variant="outline"
               onClick={handleNewProblem}
-              className="flex-1 sm:flex-none min-w-[120px]"
+              className="flex-1 sm:flex-none min-w-[120px] bg-pink-50 hover:bg-pink-100"
             >
               <RotateCw className="mr-2 h-5 w-5" />
               New
