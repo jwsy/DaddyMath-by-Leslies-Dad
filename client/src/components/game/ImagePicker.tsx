@@ -8,7 +8,7 @@ interface ImagePickerProps {
   onSelectB: (emoji: string) => void;
 }
 
-const emojis = [
+export const emojis = [
   { id: "bunny", label: "🐰" },
   { id: "bear", label: "🐻" },
   { id: "otter", label: "🦦" },

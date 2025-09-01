@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { emojis } from "@/components/game/ImagePicker";
 
 interface NumberGridProps {
   problem: {
@@ -13,15 +14,23 @@ interface NumberGridProps {
   className?: string;
 }
 
-const emojiMap = {
-  bunny: "🐰",
-  bear: "🐻",
-  puppy: "🐶",
-  kitten: "",
-  hamster: "🐹",
-  sunflower: "🌻",
-  strawberry: "🍓",
-};
+// This must match the emoji ids in ImagePicker.tsx
+// Easter egg: kitten is not included here, so it will show as a blank square because kittens like to hide.
+let emojiMap: { [key: string]: string } = {};
+emojis.forEach((emoji) => {
+  emojiMap[emoji.id] = emoji.label;
+});
+emojiMap["kitten"] = "";
+// const emojiMap = {
+//   bunny: "🐰",
+//   bear: "🐻",
+//   otter: "🦦",
+//   puppy: "🐶",
+//   kitten: "",
+//   hamster: "🐹",
+//   sunflower: "🌻",
+//   strawberry: "🍓",
+// };
 
 export default function NumberGrid({
   problem,
