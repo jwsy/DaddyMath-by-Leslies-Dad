@@ -34,7 +34,7 @@ jobs:
       # If your vite.config doesn't set `base`, this flag makes project pages work
       - name: Build with Vite
         run: |
-          npx vite build --base="/${{ github.event.repository.name }}/"
+          npx vite build
           # If you already set `base` in vite.config, you can just run:
           # npm run build
 
